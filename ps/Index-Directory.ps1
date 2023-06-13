@@ -84,8 +84,7 @@ $directoryStructure = Get-ChildItem -Path $DriveLetter -Recurse |
 # all files from the device into that directory
 if (Test-Path -Path "$DriveLetter\VIDEO_TS") {
 	$targetPath = Join-Path -Path $TargetDirectory -ChildPath "#"
-	$targetPath = Join-Path -Path $targetPath -ChildPath $volume.FileSystemLabel
-	$targetPath = Join-Path -Path $targetPath -ChildPath $serial
+	$targetPath = Join-Path -Path $targetPath -ChildPath $filename
 
 	# Create target directory if it doesn't exist
 	if (-not (Test-Path -Path $targetPath)) {
@@ -97,3 +96,7 @@ if (Test-Path -Path "$DriveLetter\VIDEO_TS") {
 		-ErrorAction SilentlyContinue -Verbose
 
 }
+# play a sound when it's done
+[console]::beep(500,500)
+
+# End of script ################################################################
